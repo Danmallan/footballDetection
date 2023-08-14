@@ -3,18 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow
 Sequential = tensorflow.keras.Sequential
-layers = tensorflow.keras.layers
 models = tensorflow.keras.models
-ImageDataGenerator = tensorflow.keras.preprocessing.image
 MaxPooling2D = tensorflow.keras.layers.MaxPooling2D
 Conv2D = tensorflow.keras.layers.Conv2D
 Flatten = tensorflow.keras.layers.Flatten
-datasets = tensorflow.keras.datasets
 Dense = tensorflow.keras.layers.Dense
-Dropout = tensorflow.keras.layers.Dropout
-SGD = tensorflow.keras.optimizers.legacy.SGD
-MaxNorm = tensorflow.keras.constraints.MaxNorm
-to_categorical = tensorflow.keras.utils.to_categorical
 from keras.preprocessing.image import load_img, img_to_array
 
 # Load train annotations.csv
@@ -46,7 +39,7 @@ model.add(MaxPooling2D((2, 2)))
 
 model.add(Flatten())
 
-model.add(Dense(224, activation='softmax'))
+model.add(Dense(224, activation='relu'))
 model.add(Dense(4))  # Output layer for xmin, ymin, xmax, ymax coordinates
 
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
